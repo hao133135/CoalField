@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="ac_login_edt_back_r" >#303F9F</color>
+
+    <color name="ac_login_btn_text_color">#ffffff</color>
+    <color name="ac_login_edt_hint_color">#999999</color>
+    <color name="black">#303F9F</color>
+    <color name="black1">#96a2f2</color>
+    <color name="cardview_light_background">#303F9F</color>
+    <color name="blue">#9ca5e1</color>
+
+</resources>

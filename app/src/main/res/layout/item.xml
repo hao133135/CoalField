@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="35dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="1dp"
+    android:paddingBottom="1dp"
+
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <ImageView
+        android:id="@+id/car_id"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_weight="1.5"
+        android:background="@drawable/back"
+        android:singleLine="true"/>
+    <TextView android:id="@+id/car_number"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:layout_gravity="left|center_vertical"
+        android:text="23231"
+        android:background="@drawable/boder"
+        android:textSize="12pt"
+        android:singleLine="true"/>
+    <TextView android:id="@+id/car_area"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:background="@drawable/boder"
+        android:text="1"
+        android:layout_marginLeft="0dp"
+        android:textSize="12pt"
+        android:singleLine="true"/>
+</LinearLayout>

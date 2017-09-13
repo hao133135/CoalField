@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/backall">
+
+        <include layout="@layout/layout_acceptance_toolbar" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp">
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="汽车号码"
+            android:layout_marginRight="10dp"
+            android:textSize="18sp"
+            android:gravity="right|center_vertical"
+            />
+        <TextView
+            android:id="@+id/car"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+
+            android:layout_weight="1"
+            android:text="关闭"
+            android:textSize="16dp"
+            android:gravity="center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="分配卸煤区域"
+            android:layout_marginRight="10dp"
+            android:textSize="18sp"
+            android:gravity="right|center_vertical"
+            />
+        <TextView
+            android:id="@+id/coalYardAear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="实际卸煤区域"
+            android:layout_marginRight="10dp"
+            android:textSize="18sp"
+            android:gravity="right|center_vertical"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/boder"
+            android:layout_weight="1"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp">
+            <Spinner
+                android:id="@+id/realityAear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+    </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="处罚原因"
+                android:layout_marginRight="10dp"
+                android:textSize="18sp"
+                android:gravity="right|center_vertical"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/boder"
+                android:layout_weight="1"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp">
+                <Spinner
+                    android:id="@+id/errorunit"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+
+
+
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/boder"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp">
+            <Spinner
+                android:id="@+id/choice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp">
+                <EditText
+                    android:id="@+id/danwei"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:digits="0123456789."
+                    android:background="@drawable/white"
+                    android:layout_weight="0.5"
+                    android:textSize="16dp"
+
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/backall"
+                    android:text="吨"
+                    android:textSize="18sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+
+            android:layout_weight="1"
+            android:text="保存"
+            android:textSize="16dp"
+            android:gravity="center"/>
+    </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <RadioGroup
+                android:id="@+id/radioGroupID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+
+                >
+
+                <RadioButton
+                    android:id="@+id/femaleGroupID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="通过验收"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="35dp"
+
+                    />
+                <RadioButton
+                    android:id="@+id/maleGroupID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退车"
+                    android:layout_weight="1"
+                    android:paddingLeft="0dp"
+                    />
+            </RadioGroup>
+            <Button
+                android:id="@+id/photograph"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_weight="1"
+
+                android:text="拍照"
+                android:textSize="16dp"
+                android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/image_button"
+            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/backall"
+                android:text="照片1"
+                android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="照片2"
+                android:textSize="18dp"
+                android:background="@drawable/boder"/>
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="照片3"
+                android:textSize="18dp"
+                android:background="@drawable/boder"/>
+            <Button
+                android:id="@+id/btn4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="照片4"
+                android:textSize="18dp"
+                android:background="@drawable/boder"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/imageview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/message"
+
+            >
+
+            <ImageView
+                android:id="@+id/imageview1"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <ImageView
+                android:id="@+id/imageview2"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <ImageView
+                android:id="@+id/imageview3"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <ImageView
+                android:id="@+id/imageview4"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+               />
+        </FrameLayout>
+    </LinearLayout>
+
+</GridLayout>
