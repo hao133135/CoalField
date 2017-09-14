@@ -170,6 +170,7 @@
                     android:background="@drawable/white"
                     android:layout_weight="0.5"
                     android:textSize="16dp"
+                    android:hint="0"
 
                     />
                 <TextView

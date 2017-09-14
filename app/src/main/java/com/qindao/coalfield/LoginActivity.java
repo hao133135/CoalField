@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
         path.setText(url1);
         but1.setOnClickListener(new but1Listener());
         but2.setOnClickListener(new but2Listener());
-         button.setOnClickListener(new buttonListener());
-        /*button.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new buttonListener());
+       /* button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(LoginActivity.this, from.class);
@@ -127,7 +127,6 @@ public class LoginActivity extends AppCompatActivity {
             }).start();*/
             if (clickUtils.isFastClick()) {
                 // 进行点击事件后的逻辑操作
-
                 String url1 = path.getText().toString();
                 String name = username.getText().toString();
                 String pwd = password.getText().toString();

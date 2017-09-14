@@ -130,7 +130,7 @@ public class from extends AppCompatActivity {
                 (this,llist,R.layout.items);
         View item = adapter.getView(0, null, mylistview);
         ViewGroup.LayoutParams params = item.getLayoutParams();
-        params.height = 3;
+        params.height = 6;
         item.setLayoutParams(params);
         mylistview.setAdapter(myArrayAdapter);
         mylistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -266,9 +266,10 @@ public class from extends AppCompatActivity {
         @Override
         protected List<String> doInBackground(Object... params) {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpGet httpGet = new HttpGet(path+"/App/GetCoalField");
-            //String key = "[{FIELDNAME:A,COALFIELDID:1},{FIELDNAME:B,COALFIELDID:2},{FIELDNAME:临时,COALFIELDID:3}]";
+
+           // String key = "[{FIELDNAME:A,COALFIELDID:1},{FIELDNAME:B,COALFIELDID:2},{FIELDNAME:临时,COALFIELDID:3}]";
             try {
+                HttpGet httpGet = new HttpGet(path+"/App/GetCoalField");
                 HttpResponse httpResponse = httpClient.execute(httpGet);
                 String key = EntityUtils.toString(httpResponse.getEntity());
                 JSONArray jsonArray = new JSONArray(key);
@@ -329,7 +330,7 @@ public class from extends AppCompatActivity {
                 httpPost.setEntity(se);
                 HttpResponse httpResponse = httpClient.execute(httpPost);
                 String key = EntityUtils.toString(httpResponse.getEntity());
-                //String key = "[{vehicleno:\"123\",zonename:南区},{vehicleno:\"111\",zonename:北区},{vehicleno:临时,zonename:北区}]";
+               // String key = "[{vehicleno:\"123\",zonename:南区},{vehicleno:\"111\",zonename:北区},{vehicleno:临时,zonename:北区}]";
                 JSONArray jsonArray = new JSONArray(key);
                 jsonzone=jsonArray;
                 for (int i = 0; i < jsonArray.length(); i++) {

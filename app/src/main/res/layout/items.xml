@@ -12,20 +12,22 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="40dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:layout_weight="1"
         android:id="@+id/txt_xs"
         android:gravity="center"
+        android:textSize="18dp"
          />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="40dp"
         android:id="@+id/txt_msg"
         android:text="Medium Text"
         android:layout_weight="1"
         android:gravity="center"
+        android:textSize="18dp"
         />
 
 </LinearLayout>

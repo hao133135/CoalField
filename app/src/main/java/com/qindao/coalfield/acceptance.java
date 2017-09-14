@@ -62,7 +62,7 @@ public class acceptance extends AppCompatActivity {
 
     private Context mContext=acceptance.this;
     private Button close, save, photograph, btn1, btn2, btn3, btn4;
-    private boolean isSelected1 = false, isSelected2 = false, isSelected3 = false, isSelected4 = false;
+    private boolean isSelected1 = false, isSelected2 = false, isSelected3 = false, isSelected4 = false,saveok=false;
     private final int OPEN_RESULT = 1; //用来打开相机
     private TextView car, cyAear;
     private EditText danwei;
@@ -124,6 +124,7 @@ public class acceptance extends AppCompatActivity {
         mImageView2 = (ImageView) findViewById(R.id.imageview2);
         mImageView3 = (ImageView) findViewById(R.id.imageview3);
         mImageView4 = (ImageView) findViewById(R.id.imageview4);
+        rbtn1.setChecked(true);
 
 
 
@@ -238,7 +239,7 @@ public class acceptance extends AppCompatActivity {
                     i.putExtra(MediaStore.EXTRA_OUTPUT, uri);//根据uri保存照片
                     i.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);//保存照片的质量*/
                     Uri imageUri = Uri.fromFile(new File("/sdcard/Image/image.jpg"));
-//指定照片保存路径（SD卡），image.jpg为一个临时文件，每次拍照后这个图片都会被替换
+                    //指定照片保存路径（SD卡），image.jpg为一个临时文件，每次拍照后这个图片都会被替换
                     i.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
                     startActivityForResult(i, OPEN_RESULT);
                 } else {
@@ -444,9 +445,9 @@ public class acceptance extends AppCompatActivity {
                             String fileName = new SimpleDateFormat("yyyyMMddHHmmss")
                                     .format(new Date()) + ".jpg";
                             FileOutputStream b = null;
-                            File file = new File("/sdcard/myImage/");
+                            File file = new File("/sdcard/Image/");
                             file.mkdirs();// 创建文件夹
-                            strImgPath = "/sdcard/myImage/"+fileName;
+                            strImgPath = "/sdcard/Image/"+fileName;
 
                             try {
                                 b = new FileOutputStream(strImgPath);
@@ -533,7 +534,6 @@ public class acceptance extends AppCompatActivity {
                 } else if (truck.getRemark().equals("退车")) {
                     param.put("state", 7);
                 }
-
                 param.put("coalbytruckid", coalbytruckid);
                 param.put("checkuser", username);
                 param.put("vehicleno", truck.getVehicleno());
@@ -543,15 +543,15 @@ public class acceptance extends AppCompatActivity {
                 } else if (truck.getRemark().equals("无")) {
                     param.put("illegaid", 0);
                 }
-
-                if (truck.getDiscount().equals("扣水")) {
-                    param.put("waterdiscount", truck.getDeductweight());
-                } else if (truck.getDiscount().equals("扣矸")) {
-                    param.put("wasterockdiscount", truck.getDeductweight());
-                } else if (truck.getDiscount().equals("扣杂")) {
-                    param.put("impuritydiscount", truck.getDeductweight());
+                if(truck.getDeductweight().isEmpty()){
+                    if (truck.getDiscount().equals("扣水")) {
+                        param.put("waterdiscount", truck.getDeductweight());
+                    } else if (truck.getDiscount().equals("扣矸")) {
+                        param.put("wasterockdiscount", truck.getDeductweight());
+                    } else if (truck.getDiscount().equals("扣杂")) {
+                        param.put("impuritydiscount", truck.getDeductweight());
+                    }
                 }
-
                 if (truck.getCheckphoto1() != null) {
                     param.put("checkphoto1", truck.getCheckphoto1());
                 }
@@ -564,48 +564,29 @@ public class acceptance extends AppCompatActivity {
                 if (truck.getCheckphoto4() != null) {
                     param.put("checkphoto4", truck.getCheckphoto4());
                 }
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
             try {
-                StringEntity se = new StringEntity(param.toString());
-                httpPost.setEntity(se);
-                HttpResponse httpResponse = httpClient.execute(httpPost);
-                String key = EntityUtils.toString(httpResponse.getEntity());
-                if (key.length() > 0) {
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-
-
-
-                            if (truck.getImagefile1() != null) {
-                                try {
-                                    String[] params = {String.valueOf(truck.getImagefile1()),String.valueOf(truck.getImagefile2()),String.valueOf(truck.getImagefile3()),String.valueOf(truck.getImagefile4())};
-                                    uploadFile(path+"/APP/UploadImg",params);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }
-
-
-
-                        }
-                    }).start();
+                String[] params = {String.valueOf(truck.getImagefile1()),String.valueOf(truck.getImagefile2()),String.valueOf(truck.getImagefile3()),String.valueOf(truck.getImagefile4())};
+                uploadFile(path+"/APP/UploadImg",params);
+                if(saveok){
+                    StringEntity se = new StringEntity(param.toString());
+                    httpPost.setEntity(se);
+                    HttpResponse httpResponse = httpClient.execute(httpPost);
+                    String key = EntityUtils.toString(httpResponse.getEntity());
+                    if(key!=null&&!"".equals(key)){
+                        Toast.makeText(mContext, "保存成功！", Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    Toast.makeText(mContext, "保存失败！", Toast.LENGTH_LONG).show();
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
             Looper.loop();
         }
     };
-
-
     private class radioListener implements RadioGroup.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
@@ -629,7 +610,15 @@ public class acceptance extends AppCompatActivity {
         File file3 = new File(path3);
         File file4 = new File(path4);
         Looper.prepare();
-
+        int count = 0;
+        if(file.length()>0)count++;
+        if(file2.length()>0)count++;
+        if(file3.length()>0)count++;
+        if(file4.length()>0)count++;
+        if(count<1){
+            Toast.makeText(mContext, "无图片，请拍照！", Toast.LENGTH_LONG).show();
+            return;
+        }
         if (file.exists() && file.length() > 0) {
             AsyncHttpClient client = new AsyncHttpClient();
             RequestParams params = new RequestParams();
@@ -643,8 +632,8 @@ public class acceptance extends AppCompatActivity {
                 public void onSuccess(int statusCode, Header[] headers,
                                       byte[] responseBody) {
                     // 上传成功后要做的工作
-                    Toast.makeText(mContext, "保存成功", Toast.LENGTH_LONG).show();
-                    String res = new String(responseBody);
+                    //Toast.makeText(mContext, "保存成功", Toast.LENGTH_LONG).show();
+                    saveok=true;
                 }
 
                 @Override
